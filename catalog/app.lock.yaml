@@ -18,7 +18,7 @@ builder:
     digest: sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
 base:
   ref: ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14
-  digest: sha256:4844ef0efd83b1549f5ab04c420965bde1f996a2a1451255f9f67aacf2fb2cd9
+  digest: sha256:daf68a5f8a3b218366e3ce847d9e4caedaaf4eb2566e4da08e0168a695a8f68a
 app:
   stack: python
   stackDigest: sha256:ff4d5a4ca85441baf140f732466ea144ef6876c9ea27b16c2b8fcf554bafaf2d
@@ -27,7 +27,7 @@ app:
     digest: sha256:27b0653b10d1f992706d4a530e8a852b2e36c18bd4ef109e4c58613d1bacc0fd
   build:
     ref: ghcr.io/northcutted/clearcutt-showcase/platform/build-python:3.14
-    digest: sha256:6d1af765e4a7b20f188729fc7855e9b332ca59be009923839c272e589140ca58
+    digest: sha256:59b29c2b0346e02eb0f2bd6d53b0d7719145f7d279e7fa31d0fe1a6c5fd03eb3
   runPlatforms:
-    linux/amd64: sha256:8558f8a8e1410ed6bc43b2c6a77d96bb01c9053a042889f0de2b4de186c0a77d
-    linux/arm64: sha256:e439ba86480dbfd2d38fdfafafb7e247c1ec8bb5e50c2bc3ffd9196213c003bd
+    linux/amd64: sha256:0895de08547cb60ca80916041809522dd9328d8b1438f543641e213a925797ba
+    linux/arm64: sha256:cac385ea38fdce97a0970d60a228f9fa30d8439a1e0e8559accdc4cace03f3cb
