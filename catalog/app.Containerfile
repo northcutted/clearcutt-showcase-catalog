@@ -7,14 +7,14 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1793145600 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793491200 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true,$ANNOTATIONS
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
 #   annotation-manifest[linux/amd64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14
-#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:c7cfaec190625ce6ab4e163e492967654dd96b0f6a1d0fe83a88c548185b0a21
+#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:68c4280cb52ab0fb159664c0763d84939012e58d59ea94511fb604eeea430107
 #   annotation-manifest[linux/arm64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14
-#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:ad671876a53111739ea5fd182b212f0ee2d17ba7f4b1c898929cfcdd7f7d7276
+#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:e04d1591dd97451f03fe08da2d3572e70e87b65f5555b1ddf4022864b8e1f65f
 
 ARG TARGETARCH
 
@@ -40,7 +40,7 @@ python3 -m pip install --no-deps --no-build-isolation --no-compile --target /out
 FACTORY_EOF
 
 # ---- app ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14@sha256:3ec0446df611c562d1eaf9b709cb0e5369fcf98d7b74ac9812d70e2552e715c2
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14@sha256:a480bd0ae7ed0bb9b3b568e29cdbce46363bb7abe4f01c2948f0d434c6263d7c
 COPY --link --from=build /out/ /app/
 ENV PORT="8080"
 ENV PYTHONDONTWRITEBYTECODE="1"
