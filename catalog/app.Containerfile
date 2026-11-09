@@ -12,14 +12,14 @@
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
 #   annotation-manifest[linux/amd64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14
-#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:68c4280cb52ab0fb159664c0763d84939012e58d59ea94511fb604eeea430107
+#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:ac49815c9fc1201d3b424e3498edf2ef3bcb1c01b7ee9d90b239e4bbe8e3811f
 #   annotation-manifest[linux/arm64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14
-#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:e04d1591dd97451f03fe08da2d3572e70e87b65f5555b1ddf4022864b8e1f65f
+#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:d53385eeb0a72b2ef577c8ec3fa4427bb38fee245b53e2572190eb14092e12b1
 
 ARG TARGETARCH
 
 # ---- build: stack python ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/build-python:3.14@sha256:271dd550f22ea87cca645272cbb81ec31a969a60ba85ae2644467f48e36a6583 AS build
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/build-python:3.14@sha256:38992c7440e192635ea5d687f5cab1b140716169d5e58276b0c1c80c546f34fb AS build
 # never shipped; root so the steps can write /out, /src, and the caches
 USER 0
 ARG TARGETOS TARGETARCH SOURCE_DATE_EPOCH
@@ -40,7 +40,7 @@ python3 -m pip install --no-deps --no-build-isolation --no-compile --target /out
 FACTORY_EOF
 
 # ---- app ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14@sha256:a480bd0ae7ed0bb9b3b568e29cdbce46363bb7abe4f01c2948f0d434c6263d7c
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-python:3.14@sha256:79457de96e2a99196548c0d19edd9dd9b41fc860992092b8fb8d874f06204067
 COPY --link --from=build /out/ /app/
 ENV PORT="8080"
 ENV PYTHONDONTWRITEBYTECODE="1"
